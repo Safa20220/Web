@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+:root {
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  
+    --primary-color: #f97316;
+    --secondary-color: #64748b;
+  }
+  
+  body {
+    scroll-behavior: smooth;
+  background-color: #E8E5E5;
+    margin: 0;
+  }
+  
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 250px 1fr;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .sidebar {
+    padding: 1rem;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .profile {
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+  }
+  
+  .nav {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-link {
+    padding: 4px 8px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+  }
+  
+  .nav-link a,
+  a:visited {
+    color: white;
+  }
+  .nav-link a {
+    text-decoration: none;
+  }
+  
+  .main {
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  
+  .section {
+    height: calc(100vh - 234px);
+    margin-bottom: 16px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .text-primary {
+    color: var(--primary-color);
+  }
+  
+  .text-secondary {
+    color: var(--secondary-color);
+  }
+  
+  .text-bold {
+    font-weight: 600;
+  }
+  
+  .section-header {
+    margin-block: 0.5rem;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+
+
+  .social-media {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .social-media a {
+    color: white;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 100%;
+  }
+  
+
+  .awards {
+    padding: 0;
+    list-style-type: none;
+  }
+  .awards li {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .awards li::before {
+    background-image: url(./images/award.png);
+    background-repeat: no-repeat;
+    background-size: 24px;
+    display: block;
+    content: "";
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+  }
+  
+
+  
+  .education {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .education-header {
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .major {
+    text-transform: uppercase;
+  }
+  .education-header h2 {
+    margin: 0;
+  }
+  
+  .education-section-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .nav-link:hover {
+    background-color: rgb(222, 205, 119);
+    color: var(--primary-color);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    
+}
+.profile img{
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.social-media {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center; 
+}
+.awards li {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    line-height: 1.6; 
+}
+
+.awards li::before {
+    content: "🏆"; 
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.education {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.education-section-wrapper {
+    border-left: 4px solid var(--primary-color); 
+    padding-left: 16px;
+}
+
+.education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.university-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333; 
+}
+
+.education-dates {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.education-details p {
+    margin: 4px 0; 
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.major {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.track,
+.gpa {
+    font-style: italic;
+    color: var(--secondary-color); 
+}
+
+.skills {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
+    margin-top: 20px;
+}
+
+.skill {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid var(--secondary-color); 
+    border-radius: 8px; 
+    background-color: #f9f9f9; 
+    transition: box-shadow 0.3s ease; 
+}
+
+.skill:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.skill-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--primary-color); 
+}
+
+.skill-details {
+    font-size: 1rem;
+    color: var(--secondary-color); 
+}
+
+#section-7 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-top: 4px solid var(--primary-color);
+  gap: 1.5rem;
+}
+
+#section-7 h1 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+.contact-form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.contact-form button {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: rgb(222, 205, 119);
+  color: var(--primary-color);
+}
+
+
+
+.interests {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
+    margin-top: 20px;
+}
+
+.interest {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid var(--secondary-color); 
+    border-radius: 8px; 
+    background-color: #f9f9f9; 
+    transition: box-shadow 0.3s ease; 
+}
+
+.interest:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.interest-icon {
+    font-size: 1.5rem;
+    margin-right: 12px;
+    color: var(--primary-color); 
+}
+
+.interest-text {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+
+
+.awards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.award {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px;
+    border: 1px solid var(--secondary-color); 
+    border-radius: 8px;
+    background-color: #f9f9f9; 
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.award:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+}
+
+.award-icon {
+    font-size: 2rem;
+    margin-right: 12px; 
+    color: var(--primary-color); 
+    flex-shrink: 0;
+}
+
+.award-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.award-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.award-date {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin: 4px 0;
+}
+
+.award-description {
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+
+@media screen and (min-width: 768px) {
+    .awards {
+        flex-direction: row; 
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .award {
+        width: calc(50% - 20px);
+    }
+}
+@media screen and (min-width: 480px) {
+    .layout {
+      grid-template-columns: 250px 1fr;
+      grid-template-rows: 1fr;
+    }
+    .nav {
+      display: list-item;
+    }
+  
+    .section {
+      height: 95vh;
+      margin-bottom: 5vh;
+    }
+  }@media screen and (min-width: 768px) {
+    .skills {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16px; 
+    }
+
+    .skill {
+        width: calc(50% - 16px); 
+    }
+}
+@media screen and (min-width: 768px) {
+    .interests {
+        flex-direction: row; 
+        flex-wrap: wrap;
+        gap: 16px; 
+    }
+
+    .interest {
+        width: calc(50% - 16px); 
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+    <title>Safa Website</title>
+  </head>
+  <body>
+    <div class="layout">
+      <nav class="sidebar">
+        <div class="profile">
+          <img src="image.png" width="100" height="100" alt="Profile image" />
+        </div>
+        <ul class="nav">
+          <li class="nav-link">
+            <a href="#section-1">About</a>
+          </li>
+          <li class="nav-link">
+            <a href="#section-2">Experience</a>
+          </li>
+          <li class="nav-link">
+            <a href="#section-3">Education</a>
+          </li>
+          <li class="nav-link">
+            <a href="#section-4">Skills</a>
+          </li>
+          <li class="nav-link">
+            <a href="#section-5">Interests</a>
+          </li>
+          <li class="nav-link">
+            <a href="#section-6">Awards</a>
+          </li>
+          <li class="nav-link">
+  <a href="#section-7">Contact</a>
+</li>
+
+        </ul>
+      </nav>
+      <main class="main">
+        <section id="section-1" class="section">
+          <div>
+            <h1 class="section-header">
+              Safa
+              <span class="text-primary"> Gith </span>
+            </h1>
+
+            <p style="font-weight: bold">
+              <span class="text-secondary">
+                Jerusalem - RasKhamis - (+970) 585800246 -
+              </span>
+              <span class="text-primary">SafaGith@gmail.com</span>
+            </p>
+          </div>
+
+          <p class="text-secondary">
+            I am a passionate software student eager to explore the world of
+            technology and innovation. With a strong foundation in programming
+            and problem-solving, I enjoy creating efficient and creative
+            solutions to complex challenges. I am particularly interested in
+            areas like software development, artificial intelligence, and web
+            design, and I am constantly learning to enhance my skills. My goal
+            is to contribute meaningfully to the tech industry while continuing
+            to grow both personally and professionally.
+          </p>
+
+          <div class="social-media">
+            <a href="https://www.facebook.com" target="_blank">
+              <i data-lucide="facebook"></i>
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+              <i data-lucide="twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com" target="_blank">
+              <i data-lucide="linkedin"></i>
+            </a>
+            <a href="https://www.github.com" target="_blank">
+              <i data-lucide="github"></i>
+            </a>
+          </div>
+        </section>
+
+        <section id="section-2" class="section">
+          <h1 class="section-header">Awards & Certificates</h1>
+          <ul class="awards">
+            <li class="text-secondary">
+              Awarded 'Best Junior Developer' for delivering high-quality code
+              and contributing to successful project launches.
+            </li>
+            <li class="text-secondary">
+              Recognized with the 'Team Excellence Award' for collaboration and
+              innovative solutions in software projects.
+            </li>
+            <li class="text-secondary">
+              Received the 'Rising Star Award' for exceptional growth and
+              dedication in the field of software engineering.
+            </li>
+            <li class="text-secondary">
+              Honored with the 'Innovation in Technology Award' for developing
+              creative and efficient software solutions.
+            </li>
+            <li class="nav-link">
+  <a href="section-7">Contact</a>
+</li>
+            
+          </ul>
+        </section>
+
+        <section id="section-3" class="section">
+          <h1 class="section-header">Education</h1>
+          <div class="education">
+            <div class="education-section-wrapper">
+              <div class="education-header">
+                <h2 class="university-name">Bethlehem University</h2>
+                <div class="education-dates text-primary">
+                  August 2021 - Current
+                </div>
+              </div>
+              <div class="education-details">
+                <p class="major text-secondary">Software Engineering</p>
+                <p class="track text-secondary">Computer Science - Web track</p>
+                
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="section-4" class="section">
+          <h1 class="section-header">Skills</h1>
+          <div class="skills">
+            <div class="skill">
+              <span class="skill-name">Programming Languages:</span>
+              <span class="skill-details">JavaScript, Python, C++</span>
+            </div>
+            <div class="skill">
+              <span class="skill-name">Web Development:</span>
+              <span class="skill-details">HTML, CSS, React, Node.js</span>
+            </div>
+            <div class="skill">
+              <span class="skill-name">Databases:</span>
+              <span class="skill-details">MySQL, MongoDB</span>
+            </div>
+            <div class="skill">
+              <span class="skill-name">Tools:</span>
+              <span class="skill-details">Git, Docker, VS Code</span>
+            </div>
+            <div class="skill">
+              <span class="skill-name">Soft Skills:</span>
+              <span class="skill-details"
+                >Problem-solving, Teamwork, Communication</span
+              >
+            </div>
+          </div>
+        </section>
+
+        <section id="section-5" class="section">
+          <h1 class="section-header">Interests</h1>
+          <div class="interests">
+            <div class="interest">
+              <span class="interest-icon">💻</span>
+              <span class="interest-text">Technology and Innovation</span>
+            </div>
+            <div class="interest">
+              <span class="interest-icon">🎨</span>
+              <span class="interest-text">Creative Web Design</span>
+            </div>
+            <div class="interest">
+              <span class="interest-icon">🤖</span>
+              <span class="interest-text">Artificial Intelligence</span>
+            </div>
+            <div class="interest">
+              <span class="interest-icon">📚</span>
+              <span class="interest-text"
+                >Learning New Programming Languages</span
+              >
+            </div>
+            <div class="interest">
+              <span class="interest-icon">🌍</span>
+              <span class="interest-text">Exploring Different Cultures</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="section-6" class="section">
+          <h1 class="section-header">Awards & Certificates</h1>
+          <div class="awards">
+            <div class="award">
+              <span class="award-icon">🏆</span>
+              <div class="award-content">
+                <h2 class="award-title">Outstanding Coding Project Award</h2>
+                <p class="award-date">December 2022</p>
+                <p class="award-description">
+                  Recognized for developing an innovative software solution
+                  during a university competition.
+                </p>
+              </div>
+            </div>
+            <div class="award">
+              <span class="award-icon">🎓</span>
+              <div class="award-content">
+                <h2 class="award-title">Certified Python Developer</h2>
+                <p class="award-date">March 2023</p>
+                <p class="award-description">
+                  Awarded by the Python Institute for completing advanced
+                  programming courses with distinction.
+                </p>
+              </div>
+            </div>
+            <div class="award">
+              <span class="award-icon">📜</span>
+              <div class="award-content">
+                <h2 class="award-title">Web Development Certification</h2>
+                <p class="award-date">August 2023</p>
+                <p class="award-description">
+                  Earned after completing a comprehensive web development
+                  bootcamp.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="section-7" class="section">
+  <h1 class="section-header">Contact</h1>
+  <div class="contact">
+    <div class="contact-info">
+      <p>
+        <strong>Phone:</strong> <span class="text-primary">(+970) 585800246</span>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:SafaGith@gmail.com" class="text-primary">SafaGith@gmail.com</a>
+      </p>
+    </div>
+    <form class="contact-form" method="post" action="your-backend-endpoint">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </div>
+</section>
+
+      </main>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+      lucide.createIcons({
+        stroke: "white",
+      });
+  
+      
+    </script>
+  </body>
+ 
+</html>
